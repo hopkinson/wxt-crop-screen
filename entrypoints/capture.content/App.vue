@@ -8,30 +8,31 @@
 </template>
 
 <script lang="ts" setup>
-import { onMessage, sendMessage } from '@/messaging'
-import CropperScreen from './components/CropperScreen.vue'
-const screenshotDataUrl = ref('')
+import { onMessage, sendMessage } from "@/messaging";
+import CropperScreen from "./components/CropperScreen.vue";
 
-onMessage('areaScreenshot', async ({ data }) => {
-  if (screenshotDataUrl.value) return false
-  screenshotDataUrl.value = data
-  return true
-})
+const screenshotDataUrl = ref("");
+
+onMessage("areaScreenshot", async ({ data }) => {
+  if (screenshotDataUrl.value) return false;
+  screenshotDataUrl.value = data;
+  return true;
+});
 
 function handleCancel() {
-  screenshotDataUrl.value = ''
+  screenshotDataUrl.value = "";
 }
 
 async function handleConfirm(data: string) {
-  await sendMessage('confirmScreenshot', data)
-  handleCancel()
+  await sendMessage("confirmScreenshot", data);
+  handleCancel();
 }
 
 onMounted(() => {
-  window.addEventListener('resize', handleCancel)
-})
+  window.addEventListener("resize", handleCancel);
+});
 
 onUnmounted(() => {
-  window.removeEventListener('resize', handleCancel)
-})
+  window.removeEventListener("resize", handleCancel);
+});
 </script>

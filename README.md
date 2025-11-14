@@ -1,14 +1,23 @@
 # 网页截图浏览器插件
 
-一个基于 WXT + Vue 3 + Cropperjs（v1版本） 开发的浏览器截图插件，提供网页选择特定区域进行截图。
+一个基于 WXT 框架和 Vue 3 开发的浏览器截图插件，支持区域截图和屏幕截图两种模式。
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Vue](https://img.shields.io/badge/Vue-3.x-green.svg)
 ![WXT](https://img.shields.io/badge/WXT-latest-orange.svg)
 
+## 功能特性
+
+- **区域截图** - 使用 Cropper.js(v1版本) 精确选择网页任意区域
+- **屏幕截图** - 基于 `getDisplayMedia` API 捕获整个屏幕内容
+
 ## 预览效果
 
-![demo](./preview.gif)
+1. 区域截图
+   ![demo-area](./preview-area.gif)
+
+2. 屏幕截图
+   ![demo-media](./preview-media.gif)
 
 ## 安装方法
 
@@ -25,12 +34,6 @@ pnpm dev
 ```
 
 启动后会自动打开浏览器（默认为谷歌浏览器）
-
-## 技术栈
-
-- **框架**: [WXT](https://wxt.dev/) - 下一代浏览器扩展开发框架
-- **前端**: [Vue 3](https://vuejs.org/) - 渐进式 JavaScript 框架
-- **截图**: [Cropperjs](https://fengyuanchen.github.io/cropperjs/v1/) - 网页截图库
 
 ## 许可证
 

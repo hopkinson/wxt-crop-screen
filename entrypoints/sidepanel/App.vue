@@ -1,16 +1,20 @@
 <template>
   <div class="crop-container">
-    截图预览：
+    屏幕预览：
     <div class="crop-container__preivew">
-      <img :src="cropperImg" v-if="cropperImg" />
+      <img :src="screenshotData" v-if="screenshotData" />
     </div>
-    <button @click="handleCropArea" class="crop-container__operation">
-      区域截屏
+    <button @click="getScreenStream" class="crop-container__operation">
+      屏幕截屏
     </button>
   </div>
 </template>
 <script lang="ts" setup>
 import { onMessage, sendMessage } from "@/messaging";
+
+import { useMediaScreen } from "../sidepanel/hooks/useMediaScreen";
+
+const { getScreenStream, screenshotData } = useMediaScreen();
 
 const cropperImg = ref("");
 
@@ -38,7 +42,7 @@ onUnmounted(() => {
 <style lang="css" scoped>
 .crop-container__preivew {
   width: 100%;
-  height: 400px;
+  height: 40vh;
   border: 1px dashed #eaeaea;
   overflow: hidden;
 }
@@ -53,5 +57,12 @@ onUnmounted(() => {
   border: 1px solid #999;
   color: #222;
   background-color: white;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+hr {
+  margin: 10px 0;
+  color: #eaaeae;
 }
 </style>
